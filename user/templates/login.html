@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock title%}
+{% block content %}
+
+<div class="form-content my-3 p-3 align-items-center justify-content-center">
+    <div class="container text-center">
+
+            <div class="row justify-content-center " >
+                <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                    <div class="user-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                          </svg>
+                        <h3 class="font-weight-light my-1 text-center">Sign In</h3>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <div id="form_errors">
+                                            {% for key, value in form.errors.items %}
+                                                <strong>{{ value }}</strong>
+                                            {% endfor %}
+                                        </div>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                <div class="form-group">
+                                    <label for="{{ form.username.id_for_label }}" class="small "></label>
+                                    {{ form.username }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ form.password.id_for_label }}" class="small "></label>
+                                    {{ form.password }}
+                                </div>
+                                <div class="form-group mt-0 mb-1">
+                                    <button name="login" class="col-md-12 btn btn-dark" id="login">Sign in</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        <div class="card-footer text-center">
+                            <div class="small">
+                                <a href="{% url 'register' %}">Don't have an account yet? Sign up</a><br>
+                                <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+                            </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+
+    <style>
+
+
+
+.user-avatar {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    position: relative;
+    
+}
+
+.user-avatar img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    border-radius: 50%; /* For a circular avatar */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+.card {
+    background-color: rgba(241, 241, 241, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+
+.card-header h3 {
+    margin: 0 0 30px 0;
+    padding: 0;
+    color: #0c0b0b;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.alert {
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+
+.btn-dark {
+    font-family: sans-serif;
+    background: #066591;
+    font-size: 11px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 20px;
+    letter-spacing: 2px;
+    outline: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 2px 10px 2px 0;
+    display: inline-block;
+}
+
+.btn-dark:hover {
+    opacity: 0.8;
+}
+
+.box .inputBox label {
+    color: #fff;
+}
+.small {
+    background: transparent;
+    border: none;
+    color: #080707;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    outline: none;
+    padding: 10px 0;
+    width: 100%;
+    
+}
+
+
+/* Style the placeholder text */
+#id_username::placeholder {
+    color: #999;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+{% endblock content %}

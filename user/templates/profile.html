@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+<div class="row my-5">
+    <div class="col-md-8">
+        <div class="card text-center">
+            <div class="card-body">
+                <h1 class="card-title">Edit Profile</h1>
+                <div class="user-avatar">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }}" alt="User Avatar">
+                    </div>
+                </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label class="small">Change Avatar:</label>
+                        <div class="custom-file">
+                            {{ profile_form.avatar }}
+                            <label class="custom-file-label" for="{{ profile_form.avatar.id_for_label }}">Choose file</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="small"></label>
+                            {{ user_form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label class="small"></label>
+                            {{ user_form.email }}
+                        </div>
+                        <div class="form-group">
+                            <a href="{% url 'password_change' %}" class="btn btn-secondary btn-sm">Change Password</a>
+                        </div>
+                        <div class="form-group">
+                            <label class="small">Bio :</label>
+                            {{ profile_form.bio }}
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-dark">Save Changes</button>
+                            <button type="reset" class="btn btn-light">Reset</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <style>
+
+
+
+.user-avatar {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    position: relative;
+    
+}
+
+.user-avatar img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    border-radius: 50%; /* For a circular avatar */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.card {
+    background-color: rgba(241, 241, 241, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+    margin: 0 auto; /* Center the card horizontally */
+    width: 100%;
+    max-width: 500px;
+    padding: 20px; /* Adjust the padding as needed */
+    display: block; /* Change it to block element */
+}
+
+    </style>
+{% endblock content %}
