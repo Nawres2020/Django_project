@@ -1,0 +1,188 @@
+/* styles.css */
+
+
+
+/* Style for the jumbotron */
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 60px;
+}
+
+/* Style for the list of dashboards */
+.jumbotron ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center the list items */
+}
+
+/* Style for list items */
+.jumbotron ul li {
+    margin-bottom: 10px; /* Add space between list items */
+}
+
+/* Style for dashboard links */
+.jumbotron ul li a {
+    color: #007bff; /* Default link color */
+    text-decoration: none; /* Remove underlines from links */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover effect on dashboard links */
+.jumbotron ul li a:hover {
+    color: #0056b3; /* Color when hovering over links */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+
+
+
+
+
+/* Menu styling */
+.navbar {
+    background-color: #d6d8e6;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .navbar-toggler-icon {
+    border-color: #333;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #777;
+    transition: color 0.3s;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #0f2183;
+  }
+  
+  .dropdown-menu {
+    background-color: #d6d8e6;
+  }
+  
+  .dropdown-item {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .dropdown-item:hover {
+    color: #0f2183;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Alternate row background color */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on table rows */
+.table-hover tbody tr:hover {
+    background-color: #3919ac3f;
+}
+
+/* Center content within jumbotron */
+.jumbotron h1, .jumbotron h2 {
+    text-align: center;
+}
+
+/* Center button within jumbotron */
+.jumbotron .btn-primary {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Style for project links */
+.table td a {
+    color: #007bff; 
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover effect on project links */
+.table td a:hover {
+    color: #0056b3; /* Color when hovering over links */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+/* Body and Typography */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+h2 {
+    font-size: 24px;
+    color: #666;
+}
+
+p {
+    color: #555;
+}
+
+/* Buttons and Links */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Style for the page title */
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.page-title h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+

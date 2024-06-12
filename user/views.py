@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView 
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
+from django.contrib.auth import logout 
 
 from .forms import RegisterForm, LoginForm, UpdateUserForm, UpdateProfileForm
+
 
 
 
@@ -18,7 +20,9 @@ from django.db import connection
 def home(request):
     return render(request, 'home.html')
 
-
+def logout_user(request):
+	logout(request)
+	return render(request , 'logout.html')
 
 #This is the register view 
 class RegisterView(View):
@@ -55,7 +59,6 @@ class RegisterView(View):
 # Class based view that extends from the built in login view to add a remember me functionality
 class CustomLoginView(LoginView):
     form_class = LoginForm
-
     def form_valid(self, form):
         remember_me = form.cleaned_data.get('remember_me')
 
@@ -67,20 +70,20 @@ class CustomLoginView(LoginView):
         #print(user)
         
         # A Flag to keep track if the user is found in the database
-        user_found = False 
+
         with connection.cursor() as cursor:
-            cursor.execute(""" SELECT  auth_user.username,users_userprofile.is_approved          
+            cursor.execute(""" SELECT  auth_user.username,user_userprofile.is_approved          
                                 FROM auth_user
-                                JOIN  users_userprofile ON auth_user.id = users_userprofile.user_id """)
+                                JOIN  user_userprofile ON auth_user.id = user_userprofile.user_id """)
 
             rows = cursor.fetchall()
             for row in rows:
                 #print(row)
                 if str(user) == row[0]:
-                    user_found=True
                     #print('yes')
                     if row[1]:
                         return super(CustomLoginView, self).form_valid(form)
+                    
             return redirect(to='registration_under_review')
 
 
@@ -128,6 +131,7 @@ def profile(request):
 
 def registration_under_review(request):
     return render(request, 'registration_under_review.html')
+
 
 
 

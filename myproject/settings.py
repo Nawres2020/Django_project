@@ -120,6 +120,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# here i m changing the default  because if you don't want to use /accounts/profile/ as the default redirect URL, you can change the LOGIN_REDIRECT_URL to the custom URL
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
